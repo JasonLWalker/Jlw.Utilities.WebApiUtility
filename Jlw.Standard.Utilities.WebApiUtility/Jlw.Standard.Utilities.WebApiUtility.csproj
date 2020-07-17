@@ -5,7 +5,7 @@
 	  <Deterministic>False</Deterministic>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
 	  <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);ReadPackageVersionFromOutputAssembly</GenerateNuspecDependsOn>
-	  <PackageOutputPath>..\..\bin\nupkg</PackageOutputPath>
+	  <PackageOutputPath>..\..\Jlw.Package.Releases\nupkg</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
