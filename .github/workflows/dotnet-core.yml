@@ -23,16 +23,16 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test with dotnet
       run: dotnet test --no-restore --verbosity normal
-  
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-        with:
-          source-url: https://nuget.pkg.github.com/jasonlwalker/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
+      with:
+        source-url: https://nuget.pkg.github.com/jasonlwalker/index.json
+    env:
+      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
     - name: Pack NuGet package
       run: |  
           cd <project>
