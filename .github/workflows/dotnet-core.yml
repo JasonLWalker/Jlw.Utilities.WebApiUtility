@@ -41,4 +41,10 @@ jobs:
       run: dotnet pack --configuration Release
 
     - name: Push package to NuGet
-      run: dotnet nuget push **/*.nupkg --skip-duplicate --no-symbols=true --source=https://nuget.pkg.github.com/jasonlwalker/index.json --api-key=${{secrets.NUGET_KEY}}
+      run: |
+           for f in ./[repository]/bin/Release/*.nupkg
+           do
+             curl -vX PUT -u "[user]:${{ secrets.NUGET_KEY }}" -F package=@$f https://nuget.pkg.github.com/[user]/
+           done
+      shell: bash
+      
