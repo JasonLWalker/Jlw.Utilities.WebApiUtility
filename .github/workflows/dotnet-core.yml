@@ -35,8 +35,8 @@ jobs:
         NUGET_AUTH_TOKEN: $GITHUB_TOKEN
     - name: Pack NuGet package
       run: |  
-          cd <project>
-          dotnet pack -c Release -o out  
+        cd <project>
+        dotnet pack -c Release -o out  
 
     - name: Push package to NuGet
       run: dotnet nuget push ./<project>/out/*.nupkg --skip-duplicate --no-symbols true
