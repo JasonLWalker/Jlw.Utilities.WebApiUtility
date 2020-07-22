@@ -36,9 +36,9 @@ jobs:
         dotnet-version: 3.1
         source-url: https://nuget.pkg.github.com/jasonlwalker/index.json
       env:
-        NUGET_AUTH_TOKEN: $GITHUB_TOKEN
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: Pack NuGet package
       run: dotnet pack --configuration Release
 
     - name: Push package to NuGet
-      run: dotnet nuget push **/*.nupkg --skip-duplicate --no-symbols true --api-key=$GITHUB_TOKEN --source=https://nuget.pkg.github.com/jasonlwalker/index.json
+      run: dotnet nuget push **/*.nupkg --skip-duplicate --no-symbols true 
