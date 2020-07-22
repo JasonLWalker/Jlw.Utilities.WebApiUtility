@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.301
+        dotnet-version: 3.1
         source-url: https://nuget.pkg.github.com/jasonlwalker/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -33,11 +33,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
+        dotnet-version: 3.1
         source-url: https://nuget.pkg.github.com/jasonlwalker/index.json
       env:
-        NUGET_AUTH_TOKEN: $GITHUB_TOKEN
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: Pack NuGet package
-      run: dotnet pack --configuration Release --no-build
+      run: dotnet pack --configuration Release
 
     - name: Push package to NuGet
       run: dotnet nuget push *.nupkg --skip-duplicate --no-symbols true
