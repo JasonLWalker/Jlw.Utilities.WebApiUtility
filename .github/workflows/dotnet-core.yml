@@ -42,9 +42,9 @@ jobs:
 
     - name: Push package to NuGet
       run: |
-           for f in ./[repository]/bin/Release/*.nupkg
+           for f in ./Jlw.Utilities.WebApiUtility/bin/Release/*.nupkg
            do
-             curl -vX PUT -u "[user]:${{ secrets.NUGET_KEY }}" -F package=@$f https://nuget.pkg.github.com/[user]/
+             curl -vX PUT -u "${{ secrets.NUGET_USER }}:${{ secrets.NUGET_KEY }}" -F package=@$f ${{ secrets.NUGET_REPO }}
            done
       shell: bash
       
