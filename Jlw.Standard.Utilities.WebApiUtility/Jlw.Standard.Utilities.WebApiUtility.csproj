@@ -5,6 +5,7 @@
 	  <Deterministic>False</Deterministic>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
 	  <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);ReadPackageVersionFromOutputAssembly</GenerateNuspecDependsOn>
+    <RepositoryUrl>https://github.com/JasonLWalker/Jlw.Package.Releases.git</RepositoryUrl>    	  
   </PropertyGroup>
 
   <ItemGroup>
