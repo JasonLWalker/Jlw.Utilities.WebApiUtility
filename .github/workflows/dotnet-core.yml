@@ -19,7 +19,24 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
-    - name: Build
+    - name: Build with dotnet
       run: dotnet build --configuration Release --no-restore
-    - name: Test
+    - name: Test with dotnet
       run: dotnet test --no-restore --verbosity normal
+  
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+        with:
+          source-url: https://nuget.pkg.github.com/jasonlwalker/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
+    - name: Pack NuGet package
+      run: |  
+          cd <project>
+          dotnet pack -c Release -o out  
+
+    - name: Push package to NuGet
+      run: dotnet nuget push ./<project>/out/*.nupkg --skip-duplicate --no-symbols true
