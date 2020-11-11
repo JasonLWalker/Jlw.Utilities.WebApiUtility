@@ -18,7 +18,6 @@ namespace Jlw.Standard.Utilities.WebApiUtility
         /// The type of Api response message that is being returned. This can also be used to determine how the message should be displayed to the user.
         /// </summary>
         [JsonProperty]
-        [JsonConverter(typeof(StringEnumConverter))]
         ApiMessageType MessageType { get; }
     }
 }
