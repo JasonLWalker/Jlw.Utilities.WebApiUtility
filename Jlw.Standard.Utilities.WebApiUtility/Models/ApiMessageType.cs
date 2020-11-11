@@ -12,6 +12,7 @@ namespace Jlw.Standard.Utilities.WebApiUtility
     //[JsonConverter(typeof(Int32Converter))]
     public enum ApiMessageType
     {
+        Default = 0,
         Success=0,
         Warning=1,
         Info=2,
