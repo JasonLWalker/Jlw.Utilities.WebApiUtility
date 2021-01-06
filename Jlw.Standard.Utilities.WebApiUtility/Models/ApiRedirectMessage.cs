@@ -10,7 +10,6 @@ namespace Jlw.Standard.Utilities.WebApiUtility
         /// <summary>
         /// URL address that the user should be redirected to.
         /// </summary>
-        [JsonProperty]
         public string RedirectUrl { get; internal set; }
 
         /// <summary>

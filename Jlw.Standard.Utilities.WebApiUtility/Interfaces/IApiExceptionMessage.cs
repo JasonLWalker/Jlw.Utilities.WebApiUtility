@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Jlw.Utilities.Data;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Jlw.Standard.Utilities.WebApiUtility
 {
@@ -10,13 +12,13 @@ namespace Jlw.Standard.Utilities.WebApiUtility
         /// <summary>
         /// The message specific to the exception
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("ExceptionMessage", NamingStrategyType = typeof(DefaultNamingStrategy), ItemConverterType = typeof(JlwJsonConverter<string>))]
         string ExceptionMessage { get; }
 
         /// <summary>
         /// The exception type
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("ExceptionType", NamingStrategyType = typeof(DefaultNamingStrategy), ItemConverterType = typeof(JlwJsonConverter<string>))]
         string ExceptionType { get; }
     }
 }

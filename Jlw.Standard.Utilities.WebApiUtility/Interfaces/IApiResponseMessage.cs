@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Jlw.Utilities.Data;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 
 namespace Jlw.Standard.Utilities.WebApiUtility
 {
@@ -11,13 +13,14 @@ namespace Jlw.Standard.Utilities.WebApiUtility
         /// <summary>
         /// Message string to be displayed to user
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("Message", NamingStrategyType = typeof(DefaultNamingStrategy), ItemConverterType = typeof(JlwJsonConverter<string>))]
         string Message { get; }
 
         /// <summary>
         /// The type of Api response message that is being returned. This can also be used to determine how the message should be displayed to the user.
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("MessageType", NamingStrategyType = typeof(DefaultNamingStrategy))]
+        [Newtonsoft.Json.JsonConverter(typeof(JlwJsonConverter<int>))]
         ApiMessageType MessageType { get; }
     }
 }

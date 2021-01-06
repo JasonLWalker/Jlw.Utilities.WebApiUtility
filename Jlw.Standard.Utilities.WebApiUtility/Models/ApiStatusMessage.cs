@@ -10,19 +10,16 @@ namespace Jlw.Standard.Utilities.WebApiUtility
         /// <summary>
         /// Message string to be displayed to user
         /// </summary>
-        [JsonProperty]
         public string Message { get; internal set; }
 
         /// <summary>
         /// The type of Api response message that is being returned. This can also be used to determine how the message should be displayed to the user.
         /// </summary>
-        [JsonProperty]
         public ApiMessageType MessageType { get; internal set; }
 
         /// <summary>
         /// Dialog or Toast title line.
         /// </summary>
-        [JsonProperty]
         public string Title { get; internal set; }
 
         /// <summary>

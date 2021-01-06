@@ -11,19 +11,16 @@ namespace Jlw.Standard.Utilities.WebApiUtility
         /// <summary>
         /// Will always return a message of type "Danger"
         /// </summary>
-        [JsonProperty]
         public new ApiMessageType MessageType => ApiMessageType.Danger;
 
         /// <summary>
         /// The message from the inner wrapped exception
         /// </summary>
-        [JsonProperty]
         public string ExceptionMessage { get; internal set; }
 
         /// <summary>
         /// Type of exception that has occurred.
         /// </summary>
-        [JsonProperty]
         public string ExceptionType { get; internal set; }
 
 

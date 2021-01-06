@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Jlw.Utilities.Data;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Jlw.Standard.Utilities.WebApiUtility
 {
@@ -10,7 +12,7 @@ namespace Jlw.Standard.Utilities.WebApiUtility
         /// <summary>
         /// Dialog or Toast title line.
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("Title", NamingStrategyType = typeof(DefaultNamingStrategy), ItemConverterType = typeof(JlwJsonConverter<string>))]
         string Title { get; }
 
     }

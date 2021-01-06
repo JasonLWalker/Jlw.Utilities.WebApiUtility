@@ -9,7 +9,8 @@
  </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Jlw.Utilities.Data" Version="4.0.7647.37875" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
 	<Target Name="ReadPackageVersionFromOutputAssembly" DependsOnTargets="Build">
