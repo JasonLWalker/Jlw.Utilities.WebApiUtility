@@ -1,6 +1,4 @@
-using Newtonsoft.Json;
-
-namespace Jlw.Standard.Utilities.WebApiUtility
+namespace Jlw.Utilities.WebApiUtility
 {
     /// <summary>
     /// A message that indicates that the user should be redirected to another location

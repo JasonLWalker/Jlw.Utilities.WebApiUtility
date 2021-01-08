@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Jlw.Standard.Utilities.WebApiUtility
+namespace Jlw.Utilities.WebApiUtility
 {
     /// <summary>
     /// An Api Message that is used to encapsulate an Exception, This is a similar format to that returned by JSON serialization of an exception.

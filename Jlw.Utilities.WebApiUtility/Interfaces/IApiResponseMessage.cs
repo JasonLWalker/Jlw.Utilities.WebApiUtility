@@ -1,9 +1,8 @@
 ﻿using Jlw.Utilities.Data;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace Jlw.Standard.Utilities.WebApiUtility
+namespace Jlw.Utilities.WebApiUtility
 {
     /// <summary>
     /// Base Interface for a SPS WebApi response message

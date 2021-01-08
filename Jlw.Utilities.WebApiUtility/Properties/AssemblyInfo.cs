@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Jlw.Utilities.OpenMaps")]
+[assembly: AssemblyTitle("Jlw.Utilities.WebApiUtility")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Jlw.Utilites.OpenMaps")]
-[assembly: AssemblyCopyright("Copyright ©2019 Jason L. Walker")]
+[assembly: AssemblyProduct("Jlw.Utilites.WebApiUtility")]
+[assembly: AssemblyCopyright("Copyright ©2012-2021 Jason L. Walker")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c5672948-d3db-45ff-a99a-ac02749aa51e")]
+[assembly: Guid("79A49E97-BCE3-4A23-A429-69B18438308C")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,6 +1,4 @@
-using Newtonsoft.Json;
-
-namespace Jlw.Standard.Utilities.WebApiUtility
+namespace Jlw.Utilities.WebApiUtility
 {
     /// <summary>
     /// Status type SPS WebApi response message. These messages will commonly be displayed in toasts or popup dialog boxes.

@@ -1,7 +1,6 @@
 using System;
-using Newtonsoft.Json;
 
-namespace Jlw.Standard.Utilities.WebApiUtility
+namespace Jlw.Utilities.WebApiUtility
 {
     /// <summary>
     /// Class to wrap exceptions and return them as SPS WebApi messages
