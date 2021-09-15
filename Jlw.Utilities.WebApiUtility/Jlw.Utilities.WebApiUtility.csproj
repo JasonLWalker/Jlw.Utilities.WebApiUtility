@@ -2,18 +2,63 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Deterministic>False</Deterministic>
-    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
-    <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);ReadPackageVersionFromOutputAssembly</GenerateNuspecDependsOn>
-    <RepositoryUrl>https://github.com/JasonLWalker/Jlw.Utilities.WebApiUtility.git</RepositoryUrl>
- </PropertyGroup>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <GenerateEmbeddedFilesManifest>True</GenerateEmbeddedFilesManifest>
 
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Jlw.Utilities.WebApiUtility</PackageId>
+    <RepositoryUrl>https://github.com/JasonLWalker/Jlw.Utilities.WebApiUtility.git</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>Provided as is</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <Description>
+      WebApi Utility class designed to work with the libJlwAppBuilder and libJlwUtility Npm/javascript libraries.
+    </Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <IsPackable>True</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyName>$(PackageId)</AssemblyName>
+    <RootNamespace>$(PackageId)</RootNamespace>
+    <Company>Jason L. Walker</Company>
+    <Authors>Jason L. Walker</Authors>
+    <Copyright>Copyright ©2014-2021 Jason L. Walker</Copyright>
+    <VersionPrefix Condition="'$(VersionPrefix)' == ''">0.0.0.1</VersionPrefix>
+    <Version>$(VersionPrefix)$(VersionSuffix)</Version>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
+    <DebugSymbols>true</DebugSymbols>
+    <EmbedAllSources>true</EmbedAllSources>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  
   <ItemGroup>
     <None Remove="Jlw.Utilities.WebApiUtility.csproj.DotSettings" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Jlw.Utilities.Data" Version="4.0.7678.28459" />
+    <PackageReference Include="Jlw.Utilities.Data" Version="4.0.7897.7974" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
