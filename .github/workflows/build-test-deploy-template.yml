@@ -94,7 +94,9 @@ jobs:
         run: dotnet nuget push ${{ env.BUILD_WORKSPACE_PATH }}/**/*.snupkg -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json -k ${{secrets.GITHUB_TOKEN }} --skip-duplicate
 
       - name: Publish the packages to NuGet
-        run: dotnet nuget push ${{ env.BUILD_WORKSPACE_PATH }}/**/*.*nupkg  -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_KEY }} --skip-duplicate
+        run: dotnet nuget push ${{ env.BUILD_WORKSPACE_PATH }}/**/*.nupkg  -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_KEY }} --skip-duplicate
+      - name: Publish the source packages to NuGet
+        run: dotnet nuget push ${{ env.BUILD_WORKSPACE_PATH }}/**/*.snupkg  -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_KEY }} --skip-duplicate
       #- name: Generate README.md
       #  shell: pwsh
       #  run: |

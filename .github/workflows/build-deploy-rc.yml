@@ -1,0 +1,20 @@
+name: Build and Deploy (Release Candidate)
+
+on:
+  push:
+    branches: 
+      - 'staging'
+    paths-ignore:       # Do not automatically run if changes are only in the following files/directories
+      - '**/README.md'
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-test-deploy-template.yml
+    with:
+        buildConfig: "Debug"
+        versionPrefix: ""
+        versionSuffix: "-rc"
+    secrets:
+        NUGET_KEY: ${{ secrets.NUGET_KEY }}
+

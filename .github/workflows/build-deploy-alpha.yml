@@ -1,0 +1,16 @@
+name: Build and Deploy (Alpha)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-test-deploy-template.yml
+    with:
+        buildConfig: "Debug"
+        versionPrefix: ""
+        versionSuffix: "-alpha"
+    secrets:
+        NUGET_KEY: ${{ secrets.NUGET_KEY }}
+
+
