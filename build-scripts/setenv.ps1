@@ -10,10 +10,14 @@ if (-Not ($packageName)){
 
 # Export GitHub Environment variables
 if ($ENV:GITHUB_ENV) {
-	"PKGNAME=$packageName" | Add-Content -Path $ENV:GITHUB_ENV
-	"CURRENTDIR=$workingDir" | Add-Content -Path $ENV:GITHUB_ENV
-	"DOTNET_NOLOGO=1" | Add-Content -Path $ENV:GITHUB_ENV
-    "DOTNET_CLI_TELEMETRY_OPTOUT=1" | Add-Content -Path $ENV:GITHUB_ENV
-    "DOTNET_MULTILEVEL_LOOKUP=1" | Add-Content -Path $ENV:GITHUB_ENV
-
+	"PKGNAME=$packageName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+	"REPO_PKGNAME=Jlw.Utilities.Data" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+	"CURRENTDIR=$workingDir" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+	"DOTNET_NOLOGO=1" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+    "DOTNET_CLI_TELEMETRY_OPTOUT=1" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+    "DOTNET_MULTILEVEL_LOOKUP=1" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+    "BUILD_VERSION=$vPrefix$vSuffix" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+    "BUILD_VERSION_PREFIX=$vPrefix" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+    "BUILD_VERSION_SUFFIX=$vSuffix" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+    "PKGVERSION=$vPrefix$vSuffix" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 }

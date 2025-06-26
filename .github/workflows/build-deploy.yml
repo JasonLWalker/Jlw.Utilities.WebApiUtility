@@ -3,30 +3,22 @@ name: Build and Deploy
 on:
   push:
     branches: [ main ]
+    paths-ignore:       # Do not automatically run if changes are only in the following files/directories
+      - '**/README.md'
   pull_request:
     branches: [ main ]
+    paths-ignore:       # Do not automatically run if changes are only in the following files/directories
+      - '**/README.md'
+
+  workflow_dispatch:
 
 jobs:
   build:
+    uses: ./.github/workflows/build-test-deploy-template.yml
+    with:
+        buildConfig: "Debug"
+        versionPrefix: ""
+        versionSuffix: ""
+    secrets:
+        NUGET_KEY: ${{ secrets.NUGET_KEY }}
 
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.x
-    #- name: Configure private package repo
-    #  run: dotnet nuget add source https://nuget.pkg.github.com/${{ secrets.NUGET_USER }}/index.json --store-password-in-clear-text --name=github --username=${{ secrets.NUGET_USER }} --password=${{ secrets.NUGET_KEY }}
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build with dotnet
-      run: dotnet build --configuration Release --no-restore
-    - name: Test with dotnet
-      run: dotnet test --no-restore --verbosity normal
-    - name: Pack NuGet package
-      run: dotnet pack --no-restore --configuration Release
-
-    - name: Push package to NuGet
-      run: dotnet nuget push -s github **/*.nupkg -k ${{ secrets.NUGET_KEY }}

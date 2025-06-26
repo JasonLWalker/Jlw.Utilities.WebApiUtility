@@ -62,11 +62,23 @@
   </ItemGroup>
 
 	<Target Name="ReadPackageVersionFromOutputAssembly" DependsOnTargets="Build">
-		<GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+		<GetAssemblyIdentity AssemblyFiles="$(OutputPath)\$(AssemblyName).dll">
 			<Output TaskParameter="Assemblies" ItemName="PackAssembly" />
 		</GetAssemblyIdentity>
 		<PropertyGroup>
-			<PackageVersion>%(PackAssembly.Version)</PackageVersion>
+			<PackageVersion>%(PackAssembly.Version)$(VersionSuffix)</PackageVersion>
 		</PropertyGroup>
 	</Target>
+
+	<Target Name="CustomSetVersionNumberForProj" Condition=" ('$(VersionPrefix)' == '0.0.0.1') Or ('$(Version)' == '0.0.0.1-alpha') Or ('$(Version)' == '0.0.0.1-rc') " BeforeTargets="BeforeBuild">
+		<Message Text="%0A========== Setting Version Number ==========" Importance="high" />
+		<Exec Command="powershell $(ProjectDir)..\build-scripts\set-version-property.ps1 -versionPrefix '' -versionSuffix '-alpha' " EchoOff="true" ConsoleToMSBuild="true">
+			<Output TaskParameter="ConsoleOutput" PropertyName="Version" />
+		</Exec>
+		<CreateProperty Value="$(Version)">
+			<Output TaskParameter="Value" PropertyName="Version" />
+		</CreateProperty>
+	</Target>
+
+
 </Project>
