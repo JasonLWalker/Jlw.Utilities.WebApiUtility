@@ -2,14 +2,10 @@ name: Build and Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: 
+      - 'main'
     paths-ignore:       # Do not automatically run if changes are only in the following files/directories
       - '**/README.md'
-  pull_request:
-    branches: [ main ]
-    paths-ignore:       # Do not automatically run if changes are only in the following files/directories
-      - '**/README.md'
-
   workflow_dispatch:
 
 jobs:
