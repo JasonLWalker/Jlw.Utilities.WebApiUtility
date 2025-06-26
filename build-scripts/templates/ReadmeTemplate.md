@@ -3,12 +3,13 @@
 	$projectName = "Jlw.Utilities.WebApiUtility"
 ) -->
 # $projectName
+WebApi Utility class designed to work with the libJlwAppBuilder and libJlwUtility Npm/javascript libraries.
 
 ## Pipeline Status
 
 | Release |
-|-----|-----|-----|-----|
-| [![Build and Deploy](https://github.com/JasonLWalker/$($projectName)/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/JasonLWalker/$($projectName)/actions/workflows/build-deploy.yml) 
+|-----|
+| [![Build and Deploy](https://github.com/JasonLWalker/$($projectName)/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/JasonLWalker/$($projectName)/actions/workflows/build-deploy.yml) |
 
 # Web Api Utility
 <!-- $( 
