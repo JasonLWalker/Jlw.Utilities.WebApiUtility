@@ -11,7 +11,7 @@ if (-Not ($packageName)){
 # Export GitHub Environment variables
 if ($ENV:GITHUB_ENV) {
 	"PKGNAME=$packageName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-	"REPO_PKGNAME=Jlw.Utilities.Data" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+	"REPO_PKGNAME=Jlw.Utilities.WebApiUtility" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 	"CURRENTDIR=$workingDir" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 	"DOTNET_NOLOGO=1" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
     "DOTNET_CLI_TELEMETRY_OPTOUT=1" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
