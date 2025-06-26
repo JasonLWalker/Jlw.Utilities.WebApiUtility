@@ -1,0 +1,24 @@
+name: Build and Test
+
+on:
+  push:
+    branches-ignore:    # Automatically run when pushing to all branches that are NOT main or staging. (These will be run when pull requests come in)
+      [ 'main', 'staging' ]
+    paths-ignore:       # Do not automatically run if changes are only in the following directories
+      [ 'Help/**', 'docs/**', 'wiki/**', '.github/**', 'build-scripts/**', '**/README.md' ]
+  pull_request:
+    branches:           # Run when pull requests are submitted to main or staging
+      [ main, staging ]
+    paths-ignore:       # Do not automatically run if changes are only in the following directories
+      [ 'Help/**', 'docs/**', 'wiki/**', '.github/**', 'build-scripts/**', '**/README.md' ]
+  workflow_dispatch:    # Run on demand
+jobs:
+  build-test:
+    uses: ./.github/workflows/build-test-template.yml
+    with:
+        buildConfig: "Debug"
+        versionPrefix: ""
+        versionSuffix: ""
+    secrets:
+        NUGET_KEY: ${{ secrets.NUGET_KEY }}
+

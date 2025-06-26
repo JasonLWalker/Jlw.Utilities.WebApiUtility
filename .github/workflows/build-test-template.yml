@@ -1,0 +1,65 @@
+name: Build and Test Template
+
+on:
+  workflow_call:
+    inputs:
+        buildConfig:
+            description: 'Build Configuration'
+            required: true
+            default: 'Debug'
+            type: string
+        versionPrefix:
+            description: 'Version Number'
+            required: false
+            default: ''
+            type: string
+        versionSuffix:
+            description: 'Version Suffix'
+            required: false
+            default: '-alpha'
+            type: string
+    secrets:
+        NUGET_KEY: 
+            required: true
+
+
+jobs:
+  build-test-workflow:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '8.0.x' ]
+    env:
+      BUILD_WORKSPACE_PATH: ${{ github.workspace }}
+      INPUT_BUILD_CONFIG: ${{ inputs.buildConfig }}
+      INPUT_VERSION_PREFIX: ${{ inputs.versionPrefix }}
+      INPUT_VERSION_SUFFIX: ${{ inputs.versionSuffix }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+          source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Set version number
+        run: |
+          ${{ env.BUILD_WORKSPACE_PATH }}/build-scripts/set-version-property.ps1 '${{ env.INPUT_BUILD_CONFIG }}' '${{ env.INPUT_VERSION_SUFFIX }}' '${{ env.INPUT_VERSION_PREFIX }}'
+          ${{ env.BUILD_WORKSPACE_PATH }}/build-scripts/setenv.ps1
+        shell: pwsh
+      - name: Build / Pack
+        shell: pwsh
+        run: ${{ env.BUILD_WORKSPACE_PATH }}/build-scripts/build.ps1 -buildType '${{ env.INPUT_BUILD_CONFIG }}' -versionSuffix '${{ env.BUILD_VERSION_SUFFIX }}' -versionPrefix '${{ env.BUILD_VERSION_PREFIX }}'
+      - name: Test
+        shell: pwsh
+        run: dotnet test --no-build --no-restore --configuration '${{ env.INPUT_BUILD_CONFIG }}' --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+      - name: Upload dotnet test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-results-${{ matrix.dotnet-version }}
+          path: TestResults-${{ matrix.dotnet-version }}
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
+

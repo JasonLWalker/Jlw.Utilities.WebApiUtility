@@ -1,4 +1,4 @@
-param([string]$packageName, [string]$buildType = "Release", [string]$versionSuffix = "", [string]$versionPrefix = "")
+param([string]$packageName="", [string]$buildType="Release", [string]$versionSuffix="", [string]$versionPrefix="")
 
 # Set the Current directory path into the $workingDir variable
 $workingDir=(Get-Item -Path ".\").FullName
@@ -9,8 +9,15 @@ if (-Not ($packageName)){
 }
 
 if (-Not ($versionPrefix)){
-	$versionPrefix="1.5.$([System.TimeSpan]::FromTicks($([System.DateTime]::UtcNow.Ticks)).Subtract($([System.TimeSpan]::FromTicks(630822816000000000))).TotalDays.ToString().SubString(0,9))"
+	$versionPrefix="1.6.$([System.TimeSpan]::FromTicks($([System.DateTime]::UtcNow.Ticks)).Subtract($([System.TimeSpan]::FromTicks(630822816000000000))).TotalDays.ToString().SubString(0,9))"
 }
 
-# Build with dotnet
-dotnet build -p:VersionPrefix=$versionPrefix --version-suffix=$versionSuffix --configuration $buildType
+# Install dependencies
+#dotnet restore
+
+# Build/Pack with dotnet
+if (-Not ($versionSuffix)){
+dotnet build -p:VersionPrefix=$versionPrefix -p:Configuration=$buildType
+} else {
+dotnet build -p:VersionPrefix=$versionPrefix -p:VersionSuffix=$versionSuffix -p:Configuration=$buildType
+}
