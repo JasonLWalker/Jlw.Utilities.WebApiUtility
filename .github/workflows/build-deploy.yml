@@ -35,6 +35,8 @@ jobs:
         dotnet-version: 6.x
     #- name: Configure private package repo
     #  run: dotnet nuget add source https://nuget.pkg.github.com/${{ secrets.NUGET_USER }}/index.json --store-password-in-clear-text --name=github --username=${{ secrets.NUGET_USER }} --password=${{ secrets.NUGET_KEY }}
+    - name: Install dependencies
+      run: dotnet restore
     - name: Pack NuGet package
       run: dotnet pack --configuration Release
 
