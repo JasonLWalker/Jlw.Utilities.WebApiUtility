@@ -27,7 +27,7 @@
     <RootNamespace>$(PackageId)</RootNamespace>
     <Company>Jason L. Walker</Company>
     <Authors>Jason L. Walker</Authors>
-    <Copyright>Copyright ©2014-2021 Jason L. Walker</Copyright>
+    <Copyright>Copyright ©2014-2025 Jason L. Walker</Copyright>
     <VersionPrefix Condition="'$(VersionPrefix)' == ''">0.0.0.1</VersionPrefix>
     <Version>$(VersionPrefix)$(VersionSuffix)</Version>
     <SignAssembly>true</SignAssembly>
